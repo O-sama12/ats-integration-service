@@ -1,0 +1,27 @@
+{
+  "name": "ats-integration-service",
+  "version": "1.0.0",
+  "description": "Serverless Python microservice that integrates with an ATS to expose standardized APIs for jobs, candidates, and applications. Designed with clean architecture, modular services, and easy local testing using Serverless Offline.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-sama12/ats-integration-service.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/O-sama12/ats-integration-service/issues"
+  },
+  "homepage": "https://github.com/O-sama12/ats-integration-service#readme",
+  "devDependencies": {
+    "serverless-offline": "^14.4.0"
+  }
+}

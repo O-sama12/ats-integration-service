@@ -1,0 +1,20 @@
+service: ats-integration-service
+
+provider:
+  name: aws
+  runtime: python3.10
+  environment:
+    ATS_BASE_URL: ${env:ATS_BASE_URL}
+    ATS_API_KEY: ${env:ATS_API_KEY}
+    ENV: ${env:ENV}
+
+functions:
+  getJobs:
+    handler: src/handlers/jobs.handler
+    events:
+      - http:
+          path: jobs
+          method: get
+
+plugins:
+  - serverless-offline
