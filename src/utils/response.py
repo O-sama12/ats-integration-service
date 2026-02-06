@@ -21,3 +21,14 @@ def error_response(message, status_code=400):
             "error": message
         })
     }
+
+def internal_error_response():
+    return {
+        "statusCode": 500,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps({
+            "success": False,
+            "error": "Internal server error"
+        })
+    }
+

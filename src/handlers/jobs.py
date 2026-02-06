@@ -1,22 +1,28 @@
-from src.services.ats_client import ATSClient
+from src.services.ats_factory import get_ats_client
 from src.utils.response import success_response, error_response
 
 
 def handler(event, context):
     try:
-        client = ATSClient()
-        jobs = []
+        params = event.get("queryStringParameters") or {}
 
-        page = 1
-        while True:
-            response = client.get_jobs(page=page)
-            jobs.extend(response["results"])
+        page = int(params.get("page", 1))
+        per_page = int(params.get("per_page", 2))
 
-            if not response["has_next"]:
-                break
-            page += 1
+        client = get_ats_client()
+        response = client.get_jobs(page=page, per_page=per_page)
 
-        return success_response(jobs)
+        return success_response({
+            "jobs": response["results"],
+            "pagination": {
+                "page": page,
+                "per_page": per_page,
+                "has_next": response["has_next"]
+            }
+        })
+
+    except ValueError:
+        return error_response("page and per_page must be integers", 400)
 
     except Exception as e:
         return error_response(str(e), 500)

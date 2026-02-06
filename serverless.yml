@@ -8,6 +8,9 @@ provider:
     ATS_API_KEY: ${env:ATS_API_KEY}
     ENV: ${env:ENV}
 
+plugins:
+  - serverless-offline
+
 functions:
   getJobs:
     handler: src/handlers/jobs.handler
@@ -16,5 +19,16 @@ functions:
           path: jobs
           method: get
 
-plugins:
-  - serverless-offline
+  createCandidate:
+    handler: src/handlers/candidates.handler
+    events:
+      - http:
+          path: candidates
+          method: post
+
+  getApplications:
+    handler: src/handlers/applications.handler
+    events:
+      - http:
+          path: applications
+          method: get
