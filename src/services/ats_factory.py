@@ -1,5 +1,5 @@
 from src.config import Config
-from src.services.zoho_ats_client import ZohoATSClient
+from src.services.zoho_recruit_ats_client import ZohoATSClient
 from src.services.ats_client import ATSClient as MockATSClient
 
 

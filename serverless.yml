@@ -4,12 +4,13 @@ provider:
   name: aws
   runtime: python3.10
   environment:
-    ATS_BASE_URL: ${env:ATS_BASE_URL}
-    ATS_API_KEY: ${env:ATS_API_KEY}
     ENV: ${env:ENV}
+    ATS_PROVIDER: ${env:ATS_PROVIDER}
 
-plugins:
-  - serverless-offline
+    ZOHO_CLIENT_ID: ${env:ZOHO_CLIENT_ID}
+    ZOHO_CLIENT_SECRET: ${env:ZOHO_CLIENT_SECRET}
+    ZOHO_REFRESH_TOKEN: ${env:ZOHO_REFRESH_TOKEN}
+    ZOHO_API_BASE: ${env:ZOHO_API_BASE}
 
 functions:
   getJobs:
@@ -32,3 +33,6 @@ functions:
       - http:
           path: applications
           method: get
+
+plugins:
+  - serverless-offline

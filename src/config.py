@@ -12,8 +12,10 @@ class Config:
     ATS_BASE_URL = os.getenv("ATS_BASE_URL")
     ATS_API_KEY = os.getenv("ATS_API_KEY")
 
-    # Zoho People
+    # Zoho Recruit OAuth
     ZOHO_CLIENT_ID = os.getenv("ZOHO_CLIENT_ID")
     ZOHO_CLIENT_SECRET = os.getenv("ZOHO_CLIENT_SECRET")
     ZOHO_REFRESH_TOKEN = os.getenv("ZOHO_REFRESH_TOKEN")
-    ZOHO_API_DOMAIN = os.getenv("ZOHO_API_DOMAIN", "https://www.zohoapis.in")
+
+    # Zoho Recruit API base (India DC)
+    ZOHO_API_BASE = os.getenv("ZOHO_API_BASE", "https://www.zohoapis.in")

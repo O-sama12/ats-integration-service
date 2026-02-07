@@ -1,0 +1,94 @@
+{
+  "C:\\Users\\oagad\\OneDrive\\Desktop\\ats-integration-service\\serverless.yml": {
+    "versionFramework": "4.31.2",
+    "servicePath": "C:\\Users\\oagad\\OneDrive\\Desktop\\ats-integration-service\\serverless.yml",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "ats-integration-service",
+      "provider": {
+        "name": "aws",
+        "runtime": "python3.10",
+        "environment": {
+          "ATS_BASE_URL": "${env:ATS_BASE_URL}",
+          "ATS_API_KEY": "<REDACTED>",
+          "ENV": "local"
+        }
+      },
+      "plugins": [
+        "serverless-offline"
+      ],
+      "functions": {
+        "getJobs": {
+          "handler": "src/handlers/jobs.handler",
+          "events": [
+            {
+              "http": {
+                "path": "jobs",
+                "method": "get"
+              }
+            }
+          ]
+        },
+        "createCandidate": {
+          "handler": "src/handlers/candidates.handler",
+          "events": [
+            {
+              "http": {
+                "path": "candidates",
+                "method": "post"
+              }
+            }
+          ]
+        },
+        "getApplications": {
+          "handler": "src/handlers/applications.handler",
+          "events": [
+            {
+              "http": {
+                "path": "applications",
+                "method": "get"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "python3.10",
+      "environment": {
+        "ATS_BASE_URL": "${env:ATS_BASE_URL}",
+        "ATS_API_KEY": "<REDACTED>",
+        "ENV": "local"
+      }
+    },
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "error": {
+      "message": "Cannot resolve '${env:ATS_BASE_URL}' variable at 'provider.environment.ATS_BASE_URL'. No value is available for this variable, and no default value was provided. Please check your variable definitions or provide a default value.",
+      "stack": "Error: Cannot resolve '${env:ATS_BASE_URL}' variable at 'provider.environment.ATS_BASE_URL'. No value is available for this variable, and no default value was provided. Please check your variable definitions or provide a default value.\n    at _ResolverManager.resolve (file:///C:/Users/oagad/.serverless/releases/4.31.2/package/dist/sf-core.js:925:32358)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async #handlePlaceholderNode (file:///C:/Users/oagad/.serverless/releases/4.31.2/package/dist/sf-core.js:925:30536)\n    at async file:///C:/Users/oagad/.serverless/releases/4.31.2/package/dist/sf-core.js:925:28380\n    at async processNodeAndHandleCompletion (file:///C:/Users/oagad/.serverless/releases/4.31.2/package/dist/sf-core.js:925:16765)",
+      "code": "MISSING_VARIABLE_RESULT"
+    },
+    "serviceRawFile": "service: ats-integration-service\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: python3.10\r\n  environment:\r\n    ATS_BASE_URL: ${env:ATS_BASE_URL}\r\n    ATS_API_KEY: ${env:ATS_API_KEY}\r\n    ENV: ${env:ENV}\r\n\r\nplugins:\r\n  - serverless-offline\r\n\r\nfunctions:\r\n  getJobs:\r\n    handler: src/handlers/jobs.handler\r\n    events:\r\n      - http:\r\n          path: jobs\r\n          method: get\r\n\r\n  createCandidate:\r\n    handler: src/handlers/candidates.handler\r\n    events:\r\n      - http:\r\n          path: candidates\r\n          method: post\r\n\r\n  getApplications:\r\n    handler: src/handlers/applications.handler\r\n    events:\r\n      - http:\r\n          path: applications\r\n          method: get\r\n",
+    "command": [
+      "offline"
+    ],
+    "options": {},
+    "orgId": "be036e0b-a8fd-4d11-9688-e69c9220b292",
+    "orgName": "hmsssama",
+    "userId": "4ypRPjbq6tyzxysFyv",
+    "userName": "hmsssama",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
